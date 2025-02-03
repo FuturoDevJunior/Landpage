@@ -15,6 +15,28 @@
             --light: #F7FAFC;
             --dark: #1A202C;
             --gradient: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            --matrix: linear-gradient(45deg,
+              #00ff88 25%,
+              transparent 25%,
+              transparent 75%,
+              #00ff88 75%,
+              #00ff88 0),
+            linear-gradient(45deg,
+              #00ff88 25%,
+              transparent 25%,
+              transparent 75%,
+              #00ff88 75%,
+              #00ff88 0),
+            repeating-linear-gradient(45deg,
+              #00ff88 0,
+              #00ff88 12.5%,
+              transparent 12.5%,
+              transparent 25%,
+              #00ff88 25%,
+              #00ff88 37.5%,
+              transparent 37.5%,
+              transparent 50%);
+            --hidden-signature: "DevFerreiraG";
         }
 
         body {
@@ -171,8 +193,170 @@
             font-weight: 700;
             color: var(--primary);
             pointer-events: none;
+            -webkit-user-select: none;
             user-select: none;
             z-index: 999;
+        }
+
+        /* Migração de Estilos Inline */
+        .impact-number {
+            font-size: 3.5rem;
+            color: #e50914;
+            margin-bottom: 1rem;
+        }
+        
+        .donate-button {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #e50914, #ff5e1a);
+        }
+
+        /* Efeito Matrix Hacker */
+        .theme-matrix {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            cursor: pointer;
+            background: var(--matrix);
+            background-size: 40px 70px;
+            background-position: 0 0, 20px 35px, 0 0 1em;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            animation: matrixSpin 8s linear infinite;
+            box-shadow: 0 0 30px #00ff8880;
+        }
+
+        @keyframes matrixSpin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Sistema de Mensagens Secretas */
+        [data-signature]:hover::after {
+            content: attr(data-signature);
+            position: absolute;
+            background: #000;
+            color: #0f0;
+            padding: 0.5rem;
+            font-family: monospace;
+            white-space: nowrap;
+            animation: glitch 1s infinite;
+        }
+
+        /* Efeito Paralaxe Avançado */
+        .parallax-group {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .parallax-layer {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Texto Holográfico */
+        .hologram-text {
+            text-shadow: 0 0 10px #0ff,
+                         0 0 20px #0ff,
+                         0 0 30px #0ff;
+            animation: hologramPulse 2s ease-in-out infinite;
+        }
+
+        /* Grade Dinâmica 4D */
+        .hyper-grid {
+            display: grid;
+            gap: 1rem;
+            grid: auto-flow dense / repeat(auto-fill, minmax(300px, 1fr));
+            transform: rotate3d(1, 1, 1, 15deg);
+            transition: transform 0.5s;
+        }
+
+        /* Efeito de Distorção */
+        @supports (filter: url('#turbulence')) {
+            .distortion-effect {
+                filter: url('#turbulence');
+                transition: filter 0.3s;
+            }
+        }
+
+        /* Sistema de Animações Conectadas */
+        .quantum-animation {
+            animation: quantum 5s infinite alternate;
+            background: conic-gradient(from 90deg, 
+              #ff6b6b, #4ecdc4, #45b7d1, #96f2d7, 
+              #d9f2a2, #ffd93d, #ff6b6b);
+        }
+
+        @keyframes quantum {
+            0% { clip-path: circle(0%); }
+            100% { clip-path: circle(150%); }
+        }
+
+        /* Sistema de Realidade Aumentada */
+        .cyberpunk-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+              radial-gradient(circle at var(--x) var(--y), 
+                rgba(0,255,136,0.1) 0%,
+                transparent 15%),
+              repeating-linear-gradient(45deg,
+                transparent 0%,
+                transparent 2%,
+                #00ff88 3%,
+                transparent 5%);
+            z-index: 99999;
+            mix-blend-mode: overlay;
+            animation: cyberScan 12s linear infinite;
+        }
+
+        @keyframes cyberScan {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+
+        /* DNA Digital Animado */
+        .dna-helix {
+            position: fixed;
+            top: 50%;
+            left: 10px;
+            width: 50px;
+            height: 200vh;
+            background: repeating-linear-gradient(90deg,
+              #00ff88 0%,
+              transparent 5%,
+              transparent 45%,
+              #ff0690 50%,
+              transparent 55%,
+              transparent 95%,
+              #00ff88 100%);
+            transform: translateY(-50%) rotate(15deg);
+            opacity: 0.05;
+            animation: dnaFlow 20s linear infinite;
+        }
+
+        /* Sistema de Comunicação Quântica */
+        .quantum-comms {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .quantum-comms::before {
+            content: "DevFerreiraG";
+            position: absolute;
+            font-family: monospace;
+            color: #0f0;
+            transform: rotate(90deg);
+            right: 100%;
+            top: 10px;
+        }
+
+        .theme-matrix:hover + .quantum-comms {
+            opacity: 1;
         }
     </style>
 </head>
@@ -270,7 +454,7 @@
                             <input type="email" class="form-control" placeholder="E-mail profissional" required>
                         </div>
                         <div class="col-12">
-                            <select class="form-select" required>
+                            <select class="form-select" required title="Modalidade de Apoio">
                                 <option value="">Modalidade de Apoio</option>
                                 <option>Apadrinhamento</option>
                                 <option>Doação Única</option>
@@ -402,5 +586,50 @@
             }, 1500);
         });
     </script>
+
+    <!-- SVG para Filtros Complexos -->
+    <svg style="display:none">
+        <filter id="turbulence">
+            <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="turbulence"/>
+            <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+
+    <!-- Easter Eggs Camuflados -->
+    <div class="theme-matrix" 
+         data-signature="DevFerreiraG"
+         onclick="document.body.classList.toggle('matrix-mode')"></div>
+
+    <!-- Assinatura em Diferentes Formatos -->
+    <script>
+        // Hex Code
+        const signatureHex = '446576466572726569726147';
+        
+        // Base64
+        const signatureB64 = 'RGV2RmVycmVpcmFH';
+        
+        // Binary
+        const signatureBinary = '01000100 01100101 01110110 01000110 01100101 01110010 01110010 01100101 01101001 01110010 01100001 01000111';
+    </script>
+
+    <!-- Microinterações com Assinatura -->
+    <template id="signatureTemplate">
+        <div hidden aria-hidden="true">DevFerreiraG</div>
+    </template>
+
+    <!-- Sistema de Comentários Ocultos -->
+    <!-- 
+      ██████╗ ███████╗██╗   ██╗███████╗███████╗██████╗ ███████╗
+      ██╔══██╗██╔════╝██║   ██║██╔════╝██╔════╝██╔══██╗██╔════╝
+      ██║  ██║█████╗  ██║   ██║█████╗  █████╗  ██████╔╝███████╗
+      ██║  ██║██╔══╝  ╚██╗ ██╔╝██╔══╝  ██╔══╝  ██╔══██╗╚════██║
+      ██████╔╝███████╗ ╚████╔╝ ███████╗███████╗██║  ██║███████║
+      ╚═════╝ ╚══════╝  ╚═══╝  ╚══════╝╚══════╝╚═╝  ╚═╝╚══════╝
+    -->
+
+    <div class="cyberpunk-overlay" aria-hidden="true"></div>
+
+    <div class="dna-helix"></div>
+    <div class="quantum-comms"></div>
 </body>
 </html>
